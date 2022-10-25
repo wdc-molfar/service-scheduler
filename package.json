@@ -1,0 +1,31 @@
+{
+  "name": "service-scheduler",
+  "version": "1.0.0",
+  "description": "@molfar scheduler microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdc-molfar/service-scheduler.git"
+  },
+  "author": "Andrey Boldak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wdc-molfar/service-scheduler/issues"
+  },
+  "homepage": "https://github.com/wdc-molfar/service-scheduler#readme",
+  "dependencies": {
+    "@molfar/service-chassis": "github:wdc-molfar/service-chassis",
+    "cron-parser": "^4.6.0",
+    "deep-extend": "^0.6.0",
+    "fast-glob": "^3.2.12",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongodb": "^4.9.1",
+    "node-cron": "^3.0.2",
+    "node-schedule": "^2.1.0",
+    "uuid": "^9.0.0"
+  }
+}

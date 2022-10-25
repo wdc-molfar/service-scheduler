@@ -1,0 +1,9 @@
+name: get-head-commit
+
+template:
+  - $match:
+      branch: master
+  - $sort: 
+      createdAt: -1
+  - $limit: 1
+ 

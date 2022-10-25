@@ -1,0 +1,92 @@
+msapi: "1.0.1"
+
+metadata: 
+    id: "@molfar/service-schedule"
+    title: "@molfar source scraping sсheduler" 
+
+
+components:
+    schemas:
+        SHEDULE:
+            type: object
+            
+            required:
+                - schedule
+                - scraper
+            
+            properties:
+                
+                schedule:
+                    type: object
+                    required:
+                        - id
+                        - source
+                        - activatedAt
+                    properties:
+                        id:
+                            type: string
+                        source: 
+                            type: string
+                        activatedAt: 
+                            type: object
+                            # format: date-time
+                    additionalProperties: true
+                
+                scraper:
+                    type: object
+                    required: 
+                        - scanany
+                    properties:
+                        scanany:
+                            type: object                    
+                            required:
+                                - name
+                                - script
+                                - params
+                            properties:
+                                name:
+                                    type: string
+                                script: 
+                                    type: string
+                                params:
+                                    type: string            
+                            additionalProperties: true
+                    additionalProperties: true
+            additionalProperties: true                            
+
+  
+
+service:
+
+    schedule:
+        # Sources DB settings
+        url: "mongodb+srv://jace:jace@molfar-sources.tjmxbnn.mongodb.net/?retryWrites=true&w=majority"
+        db: "sources"
+        collection: 
+            sources: "sources"
+            commits: "commits"
+            scanany: "scanany"
+        
+        # Scheduler will be activated every 10s    
+        cron: "*/10 * * * * *"
+
+    # The scheduler will send a message to
+    produce:
+        
+        amqp:
+            url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
+        
+        exchange:
+            name: "scheduled-task"
+            mode: fanout
+            options:
+                durable: true
+                persistent: true
+        
+        # Schema of generated messages
+        message:
+            $ref: "#/components/schemas/SHEDULE"
+
+
+
+    

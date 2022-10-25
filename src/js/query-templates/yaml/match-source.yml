@@ -1,0 +1,6 @@
+name: match-source
+template:
+    commit: 
+      $ref: commit.id
+    id:
+      $ref: source.id  

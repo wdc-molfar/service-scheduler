@@ -1,0 +1,30 @@
+name: get-ready-to-start
+
+template:
+  
+  - $match:
+      $and:
+        - commit:
+            $ref: commit.id
+        - schedule.startedAt:
+            $exists: true
+        - schedule.startedAt:
+            $not:
+              $eq: ""    
+  - $lookup:
+      from: scanany
+      localField: scanany.id
+      foreignField: id
+      as: executable
+      pipeline:
+        - $match:
+            commit:
+              $ref: commit.id
+        - $project:
+            _id: 0                  
+  - $unwind:
+      path: $executable
+      preserveNullAndEmptyArrays: true
+  - $project:
+      _id: 0    
+

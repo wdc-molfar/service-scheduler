@@ -1,0 +1,5 @@
+name: set-schedule
+template:
+  $set:
+    schedule: 
+      $ref: source.schedule
