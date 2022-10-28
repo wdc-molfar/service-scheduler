@@ -7,7 +7,7 @@ metadata:
 
 components:
     schemas:
-        SHEDULE:
+        OUTPUT:
             type: object
             
             required:
@@ -77,15 +77,12 @@ service:
             url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
         
         exchange:
-            name: "scheduled-task"
-            mode: fanout
-            options:
-                durable: true
-                persistent: true
-        
+            name: scheduler
+            mode: direct
+
         # Schema of generated messages
         message:
-            $ref: "#/components/schemas/SHEDULE"
+            $ref: "#/components/schemas/OUTPUT"
 
 
 
