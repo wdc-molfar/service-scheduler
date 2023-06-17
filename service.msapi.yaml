@@ -68,13 +68,13 @@ service:
             scanany: "scanany"
         
         # Scheduler will be activated every 10s    
-        cron: "*/10 * * * * *"
+        cron: "*/30 * * * * *"
 
     # The scheduler will send a message to
     produce:
         
         amqp:
-            url: "amqps://xoilebqg:Nx46t4t9cxQ2M0rF2rIyZPS_xbAhmJIG@hornet.rmq.cloudamqp.com/xoilebqg"
+            url: "amqps://jixxkoct:pFgVpsB--OFx4TjtTAILd5OWLbu_YI3j@toad.rmq.cloudamqp.com/jixxkoct"
         
         exchange:
             name: scheduler
