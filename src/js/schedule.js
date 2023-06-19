@@ -15,10 +15,23 @@ let publisher
 
 
 
+let dblock = false
+
+const lock = () => {
+	dblock = true
+}
+
+const unlock = () => {
+	setTimeout(() => {
+		dblock = false		
+	}, 1000)
+}
+
 
 
 const getSources = async bridge => {
 	commit = await bridge.getHeadCommit()
+	if(!commit) return
 	console.log("COMMIT: ",commit.id)
 	
 	let readySources = await bridge.getSources(commit)
@@ -57,10 +70,17 @@ const getTask = source => async () => {
 
 const mainExecute = bridge => async () => {
 
-	console.log(`Instance ${scheduleId} at ${new Date()}`)
+	if(dblock){
+		// console.log(`Ignored by lock`)
+		return
+	}
 
-	let sources = await getSources(bridge)
+	console.log(`Instance ${scheduleId} at ${new Date()}`)
+	lock()
 	
+	let sources = await getSources(bridge)
+	if(!sources) return
+
 	let s = sources.map(d => d.id)
 	let c = cronSources.map(d => d.id)
 
@@ -106,6 +126,7 @@ const mainExecute = bridge => async () => {
 	
 	console.log("----------------------------------------------------------------------------------------------")
 
+	unlock()
 }
 
 

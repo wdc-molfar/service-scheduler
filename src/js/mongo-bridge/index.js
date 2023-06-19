@@ -14,39 +14,105 @@ const create = async options => {
 	
 	await loadTemplates("./src/js/query-templates/yaml/*.yml")
 
-	client = await mongo.connect(options.url, {
-	   useNewUrlParser: true,
-	   useUnifiedTopology: true
-	})
+	// client = await mongo.connect(options.url, {
+	//    useNewUrlParser: true,
+	//    useUnifiedTopology: true
+	// })
 
-	let db = client.db(options.db)
+	// let db = client.db(options.db)
 
-	sourceCollection = db.collection(options.collection.sources)
-	commitCollection = db.collection(options.collection.commits)
-	scananyCollection = db.collection(options.collection.scanany)
+	// sourceCollection = db.collection(options.collection.sources)
+	// commitCollection = db.collection(options.collection.commits)
+	// scananyCollection = db.collection(options.collection.scanany)
 
 	return {
 		
 		getHeadCommit: async () => {
-			let query = getQuery("get-head-commit")
-			let res = await commitCollection.aggregate(query).toArray()
-			res = res[0]
-			return res
+			let client
+			let res
+			try {
+				client = await mongo.connect(options.url, {
+				   useNewUrlParser: true,
+				   useUnifiedTopology: true
+				})
+
+				let db = client.db(options.db)
+
+				sourceCollection = db.collection(options.collection.sources)
+				commitCollection = db.collection(options.collection.commits)
+				scananyCollection = db.collection(options.collection.scanany)
+
+
+				let query = getQuery("get-head-commit")
+				res = await commitCollection.aggregate(query).toArray()
+				res = res[0]
+			  } catch (e) {
+			  	console.log(`getHeadCommit error: ${e.toString()}`)
+			  } finally {
+			  	if (client) client.close()
+				return res
+			  }		
+
+				
 		},
 
 		getSources: async commit => {
-			let query = getQuery("get-ready-to-start", {commit})
-			let res = await sourceCollection.aggregate(query).toArray()
-			return res
+			
+			let client
+			let res
+			try {
+				client = await mongo.connect(options.url, {
+				   useNewUrlParser: true,
+				   useUnifiedTopology: true
+				})
+
+				let db = client.db(options.db)
+
+				sourceCollection = db.collection(options.collection.sources)
+				commitCollection = db.collection(options.collection.commits)
+				scananyCollection = db.collection(options.collection.scanany)
+
+
+				let query = getQuery("get-ready-to-start", {commit})
+				res = await sourceCollection.aggregate(query).toArray()
+			} catch (e) {
+			  	console.log(`getSources error: ${e.toString()}`)
+			} finally {
+			  	if (client) client.close()
+				return res
+			}
 		},
 
 		updateSources: async ({commit, sources}) => {
-			for( let i=0; i < sources.length; i++){
-				let source = sources[i]
-				let query = getQuery("match-source",{ commit, source })
-				let setter = getQuery("set-schedule",{ source })
-				await sourceCollection.updateOne(query, setter)
+
+			let client
+
+			try{ 
+
+				client = await mongo.connect(options.url, {
+				   useNewUrlParser: true,
+				   useUnifiedTopology: true
+				})
+
+				let db = client.db(options.db)
+
+				sourceCollection = db.collection(options.collection.sources)
+				commitCollection = db.collection(options.collection.commits)
+				scananyCollection = db.collection(options.collection.scanany)
+
+
+				for( let i=0; i < sources.length; i++){
+					let source = sources[i]
+					let query = getQuery("match-source",{ commit, source })
+					let setter = getQuery("set-schedule",{ source })
+					await sourceCollection.updateOne(query, setter)
+				}
+			} catch (e) {
+			  	console.log(`updateSources error: ${e.toString()}`)
+			} finally {
+			  	if (client) client.close()
 			}
+
 		},
 
 		validate: sources => {
