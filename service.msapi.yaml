@@ -68,7 +68,7 @@ service:
             scanany: "scanany"
         
         # Scheduler will be activated every 10s    
-        cron: "*/1 * * * * *"
+        cron: "*/15 * * * * *"
 
     # The scheduler will send a message to
     produce:

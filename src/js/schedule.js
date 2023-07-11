@@ -32,10 +32,16 @@ const unlock = () => {
 const getSources = async bridge => {
 	commit = await bridge.getHeadCommit()
 	if(!commit) return
+	console.log("====================================================")	
 	console.log("COMMIT: ",commit.id)
 	
 	let readySources = await bridge.getSources(commit)
+	console.log(`READY: ${readySources.map( d => d.info.name).join(", ")}`)
+
 	let { valid, invalid } = bridge.validate(readySources)
+	
+	console.log(`VALID: ${valid.map( d => d.info.name).join(", ")}`)
+	console.log(`INVALID: ${invalid.map( d => d.info.name).join(", ")}`)
 	
 	await bridge.updateSources({ commit, sources: valid})
 	await bridge.updateSources({ commit, sources: invalid})
@@ -75,18 +81,24 @@ const mainExecute = bridge => async () => {
 		return
 	}
 
-	console.log(`Instance ${scheduleId} at ${new Date()}`)
+	console.log(`Instance ${scheduleId} at ${new Date()} ${(dblock) ? '*** LOCKED ***' : ''}`)
 	lock()
 	
 	let sources = await getSources(bridge)
 	if(!sources) return
 
+	console.log("====================================================")	
+		
 	let s = sources.map(d => d.id)
 	let c = cronSources.map(d => d.id)
 
 	let toStart = difference(s, c)
+	console.log("--- toStart:", toStart.map( id => find(sources, s => s.id == id).info.name).join(", "))
 	let toStop = difference(c, s)
+	console.log("--- toStop",toStop.map( id => find(cronSources, s => s.id == id).info.name).join(", "))
+	
 	let toUpdate = intersection(c,s)
+	console.log("--- toUpdate",toUpdate.map( id => find(sources, s => s.id == id).info.name).join(", "))
 	
 	let toRestart = toUpdate.filter( id => {
 		let newValue = find(sources, d => d.id == id)
@@ -98,16 +110,17 @@ const mainExecute = bridge => async () => {
 		])
 	})
 
+
 	toStop.forEach( id => {
 		let f = find(cronSources, d => d.id == id)
-		console.log(`Stop shedule for ${f.info.name} with scanany "${f.scanany.script}"" at "${f.schedule.cron}"`)
+		console.log(`*** Stop shedule for ${f.info.name} with scanany "${f.scanany.script}"" at "${f.schedule.cron}"`)
 		f.schedule.task.cancel()
 		remove(cronSources, d => d.id == id)
 	})
 
 	toRestart.forEach( id => {
 		let f = find(cronSources, d => d.id == id)
-		console.log(`Restart  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
+		console.log(`*** Restart  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
 		f.schedule.task.cancel()
 		remove(cronSources, d => d.id == id)
 		f = find(sources, d => d.id == id)
@@ -117,12 +130,12 @@ const mainExecute = bridge => async () => {
 
 	toStart.forEach( id => {
 		let f = find(sources, d => d.id == id)
-		console.log(`Start  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
+		console.log(`*** Start  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
 		f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
 		cronSources.push(f)
 	})
 
-	console.log("Sheduled sources:", cronSources.map(d => d.info.name).join(", "))
+	console.log("--- Sheduled sources:", cronSources.map(d => d.info.name).join(", "))
 	
 	console.log("----------------------------------------------------------------------------------------------")
 

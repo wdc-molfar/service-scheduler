@@ -1,5 +1,5 @@
 name: set-schedule
 template:
   $set:
-    schedule: 
-      $ref: source.schedule
+    "schedule.process": 
+      $ref: source.schedule.process
