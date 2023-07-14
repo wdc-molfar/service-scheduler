@@ -52,10 +52,13 @@ const getSources = async bridge => {
 
 const getTask = source => async () => {
 
+	console.log(source.info.name)
+	
 	let message = {
 		schedule:{
 			id: scheduleId,
 			source: source.id,
+			name: source.info.name,
 			activatedAt: new Date() 
 		},
 		scraper:{
