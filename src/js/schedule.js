@@ -57,6 +57,7 @@ const getTask = source => async () => {
 	let message = {
 		schedule:{
 			id: scheduleId,
+			version: "1.0.1",
 			source: source.id,
 			name: source.info.name,
 			activatedAt: new Date() 
@@ -84,7 +85,7 @@ const mainExecute = bridge => async () => {
 		return
 	}
 
-	console.log(`Instance ${scheduleId} at ${new Date()} ${(dblock) ? '*** LOCKED ***' : ''}`)
+	console.log(`Instance ${scheduleId} version 1.0.1 at ${new Date()} ${(dblock) ? '*** LOCKED ***' : ''}`)
 	lock()
 	
 	let sources = await getSources(bridge)

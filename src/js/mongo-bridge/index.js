@@ -79,6 +79,7 @@ const create = async options => {
 			  	console.log(`getSources error: ${e.toString()}`)
 			} finally {
 			  	if (client) client.close()
+			  	console.log("FETCH ", (res) ? res.map( d => d.info.name).join(", ") : "NO SOURCES")	
 				return res
 			}
 		},
