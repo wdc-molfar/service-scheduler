@@ -84,7 +84,7 @@ const create = async options => {
 			}
 		},
 
-		updateSources: async ({commit, sources}) => {
+		updateSources: async ({commit, sources, instance}) => {
 
 			let client
 
@@ -104,6 +104,9 @@ const create = async options => {
 
 				for( let i=0; i < sources.length; i++){
 					let source = sources[i]
+					source.schedule.process.instance = instance
+					source.schedule.process.syncAt = new Date()
+					// console.log("UPDATE", source.schedule.process)
 					let query = getQuery("match-source",{ commit, source })
 					let setter = getQuery("set-schedule",{ source })
 					await sourceCollection.updateOne(query, setter)

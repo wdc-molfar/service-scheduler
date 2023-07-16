@@ -43,8 +43,8 @@ const getSources = async bridge => {
 	console.log(`VALID: ${valid.map( d => d.info.name).join(", ")}`)
 	console.log(`INVALID: ${invalid.map( d => d.info.name).join(", ")}`)
 	
-	await bridge.updateSources({ commit, sources: valid})
-	await bridge.updateSources({ commit, sources: invalid})
+	await bridge.updateSources({ commit, sources: valid, instance: scheduleId})
+	await bridge.updateSources({ commit, sources: invalid, instance: scheduleId})
 	
 	return valid
 }
@@ -175,7 +175,7 @@ module.exports = {
 
 		})
 
-		await bridge.updateSources({ commit, sources: cronSources})
+		await bridge.updateSources({ commit, sources: cronSources, instance: scheduleId})
 
 		mainTask.cancel()
 
