@@ -35,133 +35,155 @@ const unlock = () => {
 
 
 const getSources = async bridge => {
-	commit = await bridge.getHeadCommit()
-	if(!commit) {
-		console.log(`${date()} WARNING: (getSources) Last commit not exists`)
-		return
+	try {
+	
+		commit = await bridge.getHeadCommit()
+		if(!commit) {
+			console.log(`${date()} WARNING: (getSources) Last commit not exists`)
+			return
+		}	
+		console.log(`${date()} INFO: (getSources) Last Source commit: ${commit.id}`)
+		
+		let readySources = await bridge.getSources(commit)
+
+		if(!readySources) {
+			console.log(`${date()} WARNING:(getSources) Ready sources not exists`)
+			return
+		}	
+		
+
+		console.log(`${date()} INFO: (getSources) Ready sources:\n ${readySources.map( d => d.info.name).join("\n")}`,"\n")
+
+		let { valid, invalid } = bridge.validate(readySources)
+		
+		console.log(`${date()} INFO: (getSources) Valid sources:\n ${valid.map( d => d.info.name).join("\n")}`,"\n")
+		console.log(`${date()} INFO: (getSources) Invalid sources:\n ${invalid.map( d => d.info.name).join("\n")}`,"\n")
+		
+		await bridge.updateSources({ commit, sources: valid, instance: scheduleId})
+		await bridge.updateSources({ commit, sources: invalid, instance: scheduleId})
+		
+		return valid
+	
+	} catch (e) {
+
+		console.log(`${date()} ERROR: (getSources) ${e.toString()}`)
+	
 	}	
-	console.log(`${date()} INFO: (getSources) Last Source commit: ${commit.id}`)
-	
-	let readySources = await bridge.getSources(commit)
-
-	if(!readySources) {
-		console.log(`${date()} WARNING:(getSources) Ready sources not exists`)
-		return
-	}	
-	
-
-	console.log(`${date()} INFO: (getSources) Ready sources:\n ${readySources.map( d => d.info.name).join("\n")}`,"\n")
-
-	let { valid, invalid } = bridge.validate(readySources)
-	
-	console.log(`${date()} INFO: (getSources) Valid sources:\n ${valid.map( d => d.info.name).join("\n")}`,"\n")
-	console.log(`${date()} INFO: (getSources) Invalid sources:\n ${invalid.map( d => d.info.name).join("\n")}`,"\n")
-	
-	await bridge.updateSources({ commit, sources: valid, instance: scheduleId})
-	await bridge.updateSources({ commit, sources: invalid, instance: scheduleId})
-	
-	return valid
 }
 
 
 const getTask = source => async () => {
 
+	try {
 	
-	let message = {
-		schedule:{
-			id: scheduleId,
-			version: "1.0.1",
-			source: source.id,
-			name: source.info.name,
-			activatedAt: new Date() 
-		},
-		scraper:{
-			scanany:{
-				name: source.scanany.script,
-				script: source.executable.script,
-				params: source.scanany.params
+		let message = {
+			schedule:{
+				id: scheduleId,
+				version: "1.0.1",
+				source: source.id,
+				name: source.info.name,
+				activatedAt: new Date() 
+			},
+			scraper:{
+				scanany:{
+					name: source.scanany.script,
+					script: source.executable.script,
+					params: source.scanany.params
+				}
 			}
 		}
-	}
 
-	publisher.send(message)
-	console.log(`${date()} INFO: Task for ${source.info.name}`)
+		publisher.send(message)
+		console.log(`${date()} INFO: (getTask) Task for ${source.info.name}`)
+	} catch (e){
+
+		console.log(`${date()} ERROR: (getTask)${e.toString()}`)
+
+	}	
 }
 
 
 
 const mainExecute = bridge => async () => {
 	
-	console.log("----------------------- mainExecute -----------------------------")
-
-	if(dblock){
-		console.log(`${date()} > WARNING: (mainExecute) Ignore sync by lock`)
-		console.log("-------------------------------------------------------------------")
+	try {
 		
-		return
-	}
+		console.log("----------------------- mainExecute -----------------------------")
 
-	console.log(`${date()}: INFO: (mainExecute) Instance ${scheduleId} version 1.0.1 ${(dblock) ? '*** LOCKED ***' : ''}`)
-	lock()
-	
-	let sources = await getSources(bridge)
+		if(dblock){
+			console.log(`${date()} > WARNING: (mainExecute) Ignore sync by lock`)
+			console.log("-------------------------------------------------------------------")
+			
+			return
+		}
 
-	if(!sources) {
-		console.log(`${date()}: WARNING: (mainExecute) Sources not exists`)
+		console.log(`${date()}: INFO: (mainExecute) Instance ${scheduleId} version 1.0.1 ${(dblock) ? '*** LOCKED ***' : ''}`)
+		lock()
+		
+		let sources = await getSources(bridge)
+
+		if(!sources) {
+			console.log(`${date()}: WARNING: (mainExecute) Sources not exists`)
+			unlock()
+			return
+		}	
+
+			
+		let s = sources.map(d => d.id)
+		let c = cronSources.map(d => d.id)
+
+		let toStart = difference(s, c)
+		console.log("\n--- toStart\n", toStart.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
+		let toStop = difference(c, s)
+		console.log("\n--- toStop\n",toStop.map( id => find(cronSources, s => s.id == id).info.name).join("\n"),"\n")
+		
+		let toUpdate = intersection(c,s)
+		console.log("\n--- toUpdate\n",toUpdate.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
+		
+		let toRestart = toUpdate.filter( id => {
+			let newValue = find(sources, d => d.id == id)
+			let oldValue = find(cronSources, d => d.id == id)
+			return !equals(newValue, oldValue,[
+				"executable.script",
+				"scanany.params",
+				"schedule.cron"
+			])
+		})
+
+
+		toStop.forEach( id => {
+			let f = find(cronSources, d => d.id == id)
+			console.log(`${date()} INFO: (mainExecute) STOP ${f.info.name} at "${f.schedule.cron}"`)
+			f.schedule.task.cancel()
+			remove(cronSources, d => d.id == id)
+		})
+
+		toRestart.forEach( id => {
+			let f = find(cronSources, d => d.id == id)
+			console.log(`${date()} INFO: (mainExecute) RESTART ${f.info.name} at "${f.schedule.cron}"`)
+			f.schedule.task.cancel()
+			remove(cronSources, d => d.id == id)
+			f = find(sources, d => d.id == id)
+			f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
+			cronSources.push(f)
+		})
+
+		toStart.forEach( id => {
+			let f = find(sources, d => d.id == id)
+			console.log(`${date()} INFO: (mainExecute) START ${f.info.name} at "${f.schedule.cron}"`)
+			f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
+			cronSources.push(f)
+		})
+
+		console.log(`${date()} INFO: (mainExecute)  Sheduled sources:\n ${cronSources.map(d => d.info.name).join("\n")}\n\n`)
+		
 		unlock()
-		return
-	}	
 
-		
-	let s = sources.map(d => d.id)
-	let c = cronSources.map(d => d.id)
+	} catch (e)	{
 
-	let toStart = difference(s, c)
-	console.log("\n--- toStart\n", toStart.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
-	let toStop = difference(c, s)
-	console.log("\n--- toStop\n",toStop.map( id => find(cronSources, s => s.id == id).info.name).join("\n"),"\n")
-	
-	let toUpdate = intersection(c,s)
-	console.log("\n--- toUpdate\n",toUpdate.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
-	
-	let toRestart = toUpdate.filter( id => {
-		let newValue = find(sources, d => d.id == id)
-		let oldValue = find(cronSources, d => d.id == id)
-		return !equals(newValue, oldValue,[
-			"executable.script",
-			"scanany.params",
-			"schedule.cron"
-		])
-	})
+		console.log(`${date()} ERROR: (mainExecute)  ${e.toString()}`)
 
-
-	toStop.forEach( id => {
-		let f = find(cronSources, d => d.id == id)
-		console.log(`${date()} INFO: (mainExecute) STOP ${f.info.name} at "${f.schedule.cron}"`)
-		f.schedule.task.cancel()
-		remove(cronSources, d => d.id == id)
-	})
-
-	toRestart.forEach( id => {
-		let f = find(cronSources, d => d.id == id)
-		console.log(`${date()} INFO: (mainExecute) RESTART ${f.info.name} at "${f.schedule.cron}"`)
-		f.schedule.task.cancel()
-		remove(cronSources, d => d.id == id)
-		f = find(sources, d => d.id == id)
-		f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
-		cronSources.push(f)
-	})
-
-	toStart.forEach( id => {
-		let f = find(sources, d => d.id == id)
-		console.log(`${date()} INFO: (mainExecute) START ${f.info.name} at "${f.schedule.cron}"`)
-		f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
-		cronSources.push(f)
-	})
-
-	console.log(`${date()} INFO: (mainExecute)  Sheduled sources:\n ${cronSources.map(d => d.info.name).join("\n")}\n\n`)
-	
-	unlock()
+	}
 
 }
 
