@@ -17,31 +17,45 @@ let publisher
 
 let dblock = false
 
+
+const date = () => moment().format("YYYY-MM-DD HH:mm:ss")
+
 const lock = () => {
 	dblock = true
+	console.log(`${date()} INFO: (lock) Lock query queue`)
 }
 
 const unlock = () => {
 	setTimeout(() => {
-		dblock = false		
-	}, 1000)
+		dblock = false
+		console.log(`${date()} INFO: (unlock) Unlock query queue`)
+		console.log("------------------------------------------------------------------\n")
+	}, 3000)
 }
-
 
 
 const getSources = async bridge => {
 	commit = await bridge.getHeadCommit()
-	if(!commit) return
-	console.log("====================================================")	
-	console.log("COMMIT: ",commit.id)
+	if(!commit) {
+		console.log(`${date()} WARNING: (getSources) Last commit not exists`)
+		return
+	}	
+	console.log(`${date()} INFO: (getSources) Last Source commit: ${commit.id}`)
 	
 	let readySources = await bridge.getSources(commit)
-	console.log(`READY: ${readySources.map( d => d.info.name).join(", ")}`)
+
+	if(!readySources) {
+		console.log(`${date()} WARNING:(getSources) Ready sources not exists`)
+		return
+	}	
+	
+
+	console.log(`${date()} INFO: (getSources) Ready sources:\n ${readySources.map( d => d.info.name).join("\n")}`,"\n")
 
 	let { valid, invalid } = bridge.validate(readySources)
 	
-	console.log(`VALID: ${valid.map( d => d.info.name).join(", ")}`)
-	console.log(`INVALID: ${invalid.map( d => d.info.name).join(", ")}`)
+	console.log(`${date()} INFO: (getSources) Valid sources:\n ${valid.map( d => d.info.name).join("\n")}`,"\n")
+	console.log(`${date()} INFO: (getSources) Invalid sources:\n ${invalid.map( d => d.info.name).join("\n")}`,"\n")
 	
 	await bridge.updateSources({ commit, sources: valid, instance: scheduleId})
 	await bridge.updateSources({ commit, sources: invalid, instance: scheduleId})
@@ -52,7 +66,6 @@ const getSources = async bridge => {
 
 const getTask = source => async () => {
 
-	console.log(source.info.name)
 	
 	let message = {
 		schedule:{
@@ -72,37 +85,44 @@ const getTask = source => async () => {
 	}
 
 	publisher.send(message)
-	console.log(`Generate task for scanany "${message.scraper.scanany.name}" with params \n${message.scraper.scanany.params}`)
-	// console.log("*****************", message.scraper.scanany.params)
+	console.log(`${date()} INFO: Task for ${source.info.name}`)
 }
 
 
 
 const mainExecute = bridge => async () => {
+	
+	console.log("----------------------- mainExecute -----------------------------")
 
 	if(dblock){
-		// console.log(`Ignored by lock`)
+		console.log(`${date()} > WARNING: (mainExecute) Ignore sync by lock`)
+		console.log("-------------------------------------------------------------------")
+		
 		return
 	}
 
-	console.log(`Instance ${scheduleId} version 1.0.1 at ${new Date()} ${(dblock) ? '*** LOCKED ***' : ''}`)
+	console.log(`${date()}: INFO: (mainExecute) Instance ${scheduleId} version 1.0.1 ${(dblock) ? '*** LOCKED ***' : ''}`)
 	lock()
 	
 	let sources = await getSources(bridge)
-	if(!sources) return
 
-	console.log("====================================================")	
+	if(!sources) {
+		console.log(`${date()}: WARNING: (mainExecute) Sources not exists`)
+		unlock()
+		return
+	}	
+
 		
 	let s = sources.map(d => d.id)
 	let c = cronSources.map(d => d.id)
 
 	let toStart = difference(s, c)
-	console.log("--- toStart:", toStart.map( id => find(sources, s => s.id == id).info.name).join(", "))
+	console.log("\n--- toStart\n", toStart.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
 	let toStop = difference(c, s)
-	console.log("--- toStop",toStop.map( id => find(cronSources, s => s.id == id).info.name).join(", "))
+	console.log("\n--- toStop\n",toStop.map( id => find(cronSources, s => s.id == id).info.name).join("\n"),"\n")
 	
 	let toUpdate = intersection(c,s)
-	console.log("--- toUpdate",toUpdate.map( id => find(sources, s => s.id == id).info.name).join(", "))
+	console.log("\n--- toUpdate\n",toUpdate.map( id => find(sources, s => s.id == id).info.name).join("\n"),"\n")
 	
 	let toRestart = toUpdate.filter( id => {
 		let newValue = find(sources, d => d.id == id)
@@ -117,14 +137,14 @@ const mainExecute = bridge => async () => {
 
 	toStop.forEach( id => {
 		let f = find(cronSources, d => d.id == id)
-		console.log(`*** Stop shedule for ${f.info.name} with scanany "${f.scanany.script}"" at "${f.schedule.cron}"`)
+		console.log(`${date()} INFO: (mainExecute) STOP ${f.info.name} at "${f.schedule.cron}"`)
 		f.schedule.task.cancel()
 		remove(cronSources, d => d.id == id)
 	})
 
 	toRestart.forEach( id => {
 		let f = find(cronSources, d => d.id == id)
-		console.log(`*** Restart  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
+		console.log(`${date()} INFO: (mainExecute) RESTART ${f.info.name} at "${f.schedule.cron}"`)
 		f.schedule.task.cancel()
 		remove(cronSources, d => d.id == id)
 		f = find(sources, d => d.id == id)
@@ -134,21 +154,21 @@ const mainExecute = bridge => async () => {
 
 	toStart.forEach( id => {
 		let f = find(sources, d => d.id == id)
-		console.log(`*** Start  shedule for ${f.info.name} with scanany "${f.scanany.script}" at "${f.schedule.cron}"`)
+		console.log(`${date()} INFO: (mainExecute) START ${f.info.name} at "${f.schedule.cron}"`)
 		f.schedule.task = cron.scheduleJob(f.schedule.cron, getTask(f))
 		cronSources.push(f)
 	})
 
-	console.log("--- Sheduled sources:", cronSources.map(d => d.info.name).join(", "))
+	console.log(`${date()} INFO: (mainExecute)  Sheduled sources:\n ${cronSources.map(d => d.info.name).join("\n")}\n\n`)
 	
-	console.log("----------------------------------------------------------------------------------------------")
-
 	unlock()
+
 }
 
 
 
 module.exports = {
+ 	
  	configure: async config => {
  		options = config.service.schedule
  		publisher = config.publisher
@@ -165,7 +185,7 @@ module.exports = {
 			
 			s.schedule.process = {
 				type: "warning",
-				message: `Stop by termination of the shedule instance ${scheduleId} at ${moment(new Date()).format("YY-MM-DD HH:mm:ss")}`	
+				message: `Stop by termination of the shedule instance ${scheduleId} at ${moment(date()).format("YY-MM-DD HH:mm:ss")}`	
 			}
 			
 			s.schedule.task.cancel()
@@ -182,7 +202,7 @@ module.exports = {
 		bridge.close()
 
 		cron.gracefulShutdown().then(() => {
-			console.log(`Terminate scheduler instance ${scheduleId} at ${new Date()}`)
+			console.log(`Terminate scheduler instance ${scheduleId} at ${date()}`)
 			process.exit(0)
 		})
 

@@ -9,6 +9,8 @@ const parser = require('cron-parser')
 
 let client, sourceCollection, commitCollection, scananyCollection
 
+const date = () => moment().format("YYYY-MM-DD HH:mm:ss")
+
 
 const create = async options => {
 	
@@ -31,6 +33,7 @@ const create = async options => {
 			let client
 			let res
 			try {
+			
 				client = await mongo.connect(options.url, {
 				   useNewUrlParser: true,
 				   useUnifiedTopology: true
@@ -46,11 +49,15 @@ const create = async options => {
 				let query = getQuery("get-head-commit")
 				res = await commitCollection.aggregate(query).toArray()
 				res = res[0]
+			  
 			  } catch (e) {
-			  	console.log(`getHeadCommit error: ${e.toString()}`)
+			  
+			  	console.log(`${date()}: ERROR: (mb.getHeadCommit) ${e.toString()}`)
 			  } finally {
+			  
 			  	if (client) client.close()
 				return res
+			  
 			  }		
 
 				
@@ -61,6 +68,7 @@ const create = async options => {
 			let client
 			let res
 			try {
+			
 				client = await mongo.connect(options.url, {
 				   useNewUrlParser: true,
 				   useUnifiedTopology: true
@@ -75,12 +83,17 @@ const create = async options => {
 
 				let query = getQuery("get-ready-to-start", {commit})
 				res = await sourceCollection.aggregate(query).toArray()
+			
 			} catch (e) {
-			  	console.log(`getSources error: ${e.toString()}`)
+			
+			  	console.log(`${date()}: ERROR: (mb.getSources) ${e.toString()}`)
+			
 			} finally {
+			
 			  	if (client) client.close()
-			  	console.log("FETCH ", (res) ? res.map( d => d.info.name).join(", ") : "NO SOURCES")	
+			  	console.log(`${date()}: INFO: (mb.getSources) Fetch:\n ${(res) ? res.map( d => d.info.name).join("\n")+"\n" : "NO SOURCES"}`)	
 				return res
+			
 			}
 		},
 
@@ -112,9 +125,13 @@ const create = async options => {
 					await sourceCollection.updateOne(query, setter)
 				}
 			} catch (e) {
-			  	console.log(`updateSources error: ${e.toString()}`)
+			
+			  	console.log(`${date()}: ERROR: (mb.updateSources) ${e.toString()}`)
+			
 			} finally {
+			
 			  	if (client) client.close()
+			
 			}
 
 		},
