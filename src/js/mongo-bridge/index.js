@@ -11,6 +11,19 @@ let client, sourceCollection, commitCollection, scananyCollection
 
 const date = () => moment().format("YYYY-MM-DD HH:mm:ss")
 
+const addMonit = client => {
+	const events = [
+		"commandStarted",
+		"commandSucceeded",
+		"commandFailed"
+	]	
+	events.forEach(eventName => {
+		client.on(eventName, event => {
+		  console.log(`${date()} MONIT: ${eventName}: ${JSON.stringify(event, null, " ")}`);
+		})
+	})	
+}
+
 
 const create = async options => {
 	
@@ -36,8 +49,11 @@ const create = async options => {
 			
 				client = await mongo.connect(options.url, {
 				   useNewUrlParser: true,
-				   useUnifiedTopology: true
+				   useUnifiedTopology: true,
+				   // monitorCommands:true
 				})
+
+				// addMonit(client)
 
 				let db = client.db(options.db)
 
@@ -67,12 +83,16 @@ const create = async options => {
 			
 			let client
 			let res
+			
 			try {
 			
 				client = await mongo.connect(options.url, {
 				   useNewUrlParser: true,
-				   useUnifiedTopology: true
+				   useUnifiedTopology: true,
+				   // monitorCommands:true
 				})
+
+				// addMonit(client)
 
 				let db = client.db(options.db)
 
@@ -82,6 +102,7 @@ const create = async options => {
 
 
 				let query = getQuery("get-ready-to-start", {commit})
+				
 				res = await sourceCollection.aggregate(query).toArray()
 			
 			} catch (e) {
@@ -105,8 +126,11 @@ const create = async options => {
 
 				client = await mongo.connect(options.url, {
 				   useNewUrlParser: true,
-				   useUnifiedTopology: true
+				   useUnifiedTopology: true,
+				   // monitorCommands:true
 				})
+
+				// addMonit(client)
 
 				let db = client.db(options.db)
 

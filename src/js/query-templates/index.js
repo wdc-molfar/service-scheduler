@@ -20,7 +20,7 @@ const loadTemplates = async pattern => {
 	filelist = await getFileList(pattern)
 	filelist.forEach( f => {
 		let content = yaml2js(fs.readFileSync(f).toString())
-		template[content.name] = content.template
+		template[content.name] = fs.readFileSync(f).toString()
 	})
 	console.log("Load Query Templates:\n"+keys(template).join("\n"))
 
@@ -54,12 +54,14 @@ const resolve = (obj, options) => {
 
 const getTemplate = (name, options) => {
 	if(!template) return
-	let query
-	if(isArray(template[name])){
-		query = template[name].map( d => d)
-	} else if(isObject(template[name])){
-		query = extend({},template[name])
-	}	
+	let query = yaml2js(template[name]).template
+	
+	// if(isArray(template[name])){
+	// 	query = template[name].map( d => d)
+	// } else if(isObject(template[name])){
+	// 	query = extend({},template[name])
+	// }	
+	
 	return resolve( query, options )	
 }
 

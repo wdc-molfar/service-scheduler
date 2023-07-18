@@ -1,0 +1,2480 @@
+Test run @molfar/service-schedule
+Load Query Templates:
+get-head-commit
+get-ready-to-start
+match-source
+set-schedule
+Configure {
+  _request_id: '77a69c60-830a-48aa-a6b9-f73dbb87d69e',
+  _instance_id: '5d844319-3ba9-420d-8feb-35dff439a16c',
+  _instance_name: '@molfar/schedule',
+  _instance_path: 'D:\\MOLFAR\\1\\service-scheduler\\service.js',
+  _command: 'configure',
+  msapi: '1.0.1',
+  metadata: {
+    id: '@molfar/service-schedule',
+    title: '@molfar source scraping sсheduler'
+  },
+  components: { schemas: { OUTPUT: [Object] } },
+  service: {
+    schedule: {
+      url: 'mongodb+srv://jace:jace@molfar-sources.tjmxbnn.mongodb.net/?retryWrites=true&w=majority',
+      db: 'sources',
+      collection: [Object],
+      cron: '*/5 * * * * *'
+    },
+    produce: { amqp: [Object], exchange: [Object], message: [Object] }
+  },
+  publisher: {},
+  data: { status: 'configured' }
+}
+Start {
+  _request_id: '7b85ea0b-4da5-4e46-8ef0-061a204caae1',
+  _instance_id: '5d844319-3ba9-420d-8feb-35dff439a16c',
+  _instance_name: '@molfar/schedule',
+  _instance_path: 'D:\\MOLFAR\\1\\service-scheduler\\service.js',
+  _command: 'start',
+  data: { status: 'started' }
+}
+Running... 10s
+----------------------- mainExecute -----------------------------
+2023-07-18 12:59:50: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 12:59:50 INFO: (lock) Lock query queue
+2023-07-18 12:59:51 INFO: (getSources) Last Source commit: 755c25bc-ae96-4b97-b8f1-78b7779f6ad8
+2023-07-18 12:59:53: INFO: (mb.getSources) Fetch:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 12:59:53 INFO: (getSources) Ready sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 12:59:53 INFO: (getSources) Valid sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 12:59:53 INFO: (getSources) Invalid sources:
+  
+
+----------------------- mainExecute -----------------------------
+2023-07-18 12:59:55 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+
+--- toStart
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+
+--- toStop
+  
+
+
+--- toUpdate
+  
+
+2023-07-18 12:59:59 INFO: (mainExecute) START nbcnews.com-rss at "0 */10 * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START foxnews.com-rss at "*/20 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START edition.cnn.com-rss at "0 0 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START cbsnews.com-rss at "0 50 */6 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START bloomberg_rss at "*/15 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START politico_rss at "* * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START the_hill_rss at "0 8 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START the_guardian_rss at "0 11 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START reuters_rss at "0 */30 * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START sky_news_rss at "*/30 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START chatham_house_ац_rss at "0 14 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START rusi_ац_rss at "0 15 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START the_independent_rss at "*/30 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START deutsche_welle_en_rss at "*/59 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START deutsche_welle_ua_rss at "0 19 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START frankfurter_allgemeine_zeitung_rss at "0 21 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START bild_rss at "0 22 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START bertelsmann_stiftung_en_rss at "*/40 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START stern_rss at "0 29 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START le_monde_en_rss at "* */5 * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START le_parisien_rss at "0 33 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START intelligenceonline_rss at "0 34 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START repubblica_rss at "0 36 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START israelhayom_rss at "0 48 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START thelocal_rss at "0 3 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START helsinkitimes_rss at "0 7 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START delfi_lv_rss at "0 11 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START delfi_ru_rss at "0 12 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START keeptalkinggreece_rss at "*/20 * * * * *"
+2023-07-18 12:59:59 INFO: (mainExecute) START газетаuz_ru_rss at "0 32 */12 * * *"
+2023-07-18 12:59:59 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+
+2023-07-18 13:00:00 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for bertelsmann_stiftung_en_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for deutsche_welle_en_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for reuters_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:00:00 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:00:00 INFO: (getTask) Task for nbcnews.com-rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:00 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:01 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:01 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:02 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:02 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:02 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:00:03 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:03 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:04 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:04 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:05 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:05 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:05: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:00:05 INFO: (lock) Lock query queue
+2023-07-18 13:00:06 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:06 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:06 INFO: (getSources) Last Source commit: 755c25bc-ae96-4b97-b8f1-78b7779f6ad8
+2023-07-18 13:00:07 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:07 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:08: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:00:08 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:08 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:08 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:00:08 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:08 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:09 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:09 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:10 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:10 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:10 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:11 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:11 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:12 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:12 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:13 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:13 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:14 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:14 INFO: (getTask) Task for politico_rss
+
+--- toStart
+ unian.ua-rss 
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:14 INFO: (mainExecute) START unian.ua-rss at "* */5 * * * *"
+2023-07-18 13:00:14 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:00:15 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:15 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:15 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:15 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:15 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:00:16 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:16 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:16 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:17 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:17 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:17 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:17 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:00:18 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:18 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:18 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:19 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:19 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:19 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:20 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:20 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:20 INFO: (getTask) Task for unian.ua-rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:20: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:00:20 INFO: (lock) Lock query queue
+2023-07-18 13:00:20 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:00:20 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:00:21 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:21 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:21 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:21 INFO: (getSources) Last Source commit: 755c25bc-ae96-4b97-b8f1-78b7779f6ad8
+2023-07-18 13:00:22 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:22 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:22 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:23 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:23 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:23 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:23: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:00:23 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:23 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:23 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:00:24 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:24 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:24 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:25 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:25 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:25 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:25 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:26 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:26 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:26 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:27 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:27 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:27 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:28 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:28 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:28 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:29 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:29 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:29 INFO: (getTask) Task for le_monde_en_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:00:29 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:00:30 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:30 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:30 INFO: (getTask) Task for unian.ua-rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:30 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:30 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:00:30 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:00:30 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:00:31 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:31 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:31 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:32 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:32 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:32 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:32 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:00:33 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:33 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:33 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:34 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:34 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:34 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:35 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:35 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:35 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:35: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:00:35 INFO: (lock) Lock query queue
+2023-07-18 13:00:36 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:36 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:36 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:36 INFO: (getSources) Last Source commit: 59fad774-b936-427b-b1c8-96e83ffcdcee
+2023-07-18 13:00:37 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:37 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:37 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:37: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:00:37 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:38 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:38 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:00:38 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:38 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:38 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:39 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:39 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:39 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:40 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:40 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:40 INFO: (getTask) Task for unian.ua-rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:40 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:40 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:00:40 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:00:40 INFO: (getTask) Task for bertelsmann_stiftung_en_rss
+2023-07-18 13:00:41 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:41 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:41 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:42 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:42 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:42 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:43 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:43 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:43 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:44 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:44 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:44 INFO: (getTask) Task for unian.ua-rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:00:44 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:00:45 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:45 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:45 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:45 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:45 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:00:46 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:46 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:46 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:47 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:47 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:47 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:47 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:00:48 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:48 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:48 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:49 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:49 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:49 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:50 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:50 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:50 INFO: (getTask) Task for unian.ua-rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:50: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:00:50 INFO: (lock) Lock query queue
+2023-07-18 13:00:51 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:51 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:51 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:51 INFO: (getSources) Last Source commit: 59fad774-b936-427b-b1c8-96e83ffcdcee
+2023-07-18 13:00:52 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:52 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:52 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:53 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:53 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:53 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:53: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:00:53 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:53 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:00:53 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:00:54 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:54 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:54 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:55 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:55 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:55 INFO: (getTask) Task for le_monde_en_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:00:55 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:00:56 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:56 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:56 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:57 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:57 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:57 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:58 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:58 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:58 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:59 INFO: (getTask) Task for unian.ua-rss
+2023-07-18 13:00:59 INFO: (getTask) Task for politico_rss
+2023-07-18 13:00:59 INFO: (getTask) Task for le_monde_en_rss
+2023-07-18 13:00:59 INFO: (getTask) Task for deutsche_welle_en_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:00:59 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:01:00 INFO: (getTask) Task for deutsche_welle_en_rss
+2023-07-18 13:01:00 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:00 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:00 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:01:00 INFO: (getTask) Task for bertelsmann_stiftung_en_rss
+2023-07-18 13:01:00 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:01:00 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:01:00 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:01:00 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:01:01 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:02 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:02 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:01:03 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:04 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:05 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:05: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:01:05 INFO: (lock) Lock query queue
+2023-07-18 13:01:06 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:06 INFO: (getSources) Last Source commit: 59fad774-b936-427b-b1c8-96e83ffcdcee
+2023-07-18 13:01:07 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:08 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:08: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:01:08 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:08 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:08 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:01:09 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:10 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:10 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:11 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:12 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:13 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:14 INFO: (getTask) Task for politico_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:01:14 INFO: (mainExecute) RESTART unian.ua-rss at "* */5 * * * *"
+2023-07-18 13:01:14 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:01:15 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:15 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:15 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:01:16 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:17 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:17 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:01:18 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:19 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:20 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:20: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:01:20 INFO: (lock) Lock query queue
+2023-07-18 13:01:20 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:01:20 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:01:21 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:21 INFO: (getSources) Last Source commit: 59fad774-b936-427b-b1c8-96e83ffcdcee
+2023-07-18 13:01:22 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:22: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:01:22 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:23 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:23 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:01:23 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:24 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:25 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:25 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:26 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:27 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:28 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:29 INFO: (getTask) Task for politico_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:01:29 INFO: (mainExecute)  Sheduled sources:
+ nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+
+
+2023-07-18 13:01:30 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:30 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:30 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:01:30 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:01:30 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:01:31 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:32 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:32 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:01:33 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:34 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:35 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:35: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:01:35 INFO: (lock) Lock query queue
+2023-07-18 13:01:36 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:36 INFO: (getSources) Last Source commit: 59fad774-b936-427b-b1c8-96e83ffcdcee
+2023-07-18 13:01:37 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:38 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:38: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:01:38 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:38 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:38 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:01:39 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:40 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:40 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:40 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:01:40 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:01:40 INFO: (getTask) Task for bertelsmann_stiftung_en_rss
+2023-07-18 13:01:41 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:42 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:43 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:44 INFO: (getTask) Task for politico_rss
+
+--- toStart
+ nytimes.com-rss 
+
+
+--- toStop
+ nbcnews.com-rss 
+
+
+--- toUpdate
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:01:44 INFO: (mainExecute) STOP nbcnews.com-rss at "0 */10 * * * *"
+2023-07-18 13:01:44 INFO: (mainExecute) START nytimes.com-rss at "* */30 * * * *"
+2023-07-18 13:01:44 INFO: (mainExecute)  Sheduled sources:
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nytimes.com-rss
+
+
+2023-07-18 13:01:45 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:45 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:45 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:01:46 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:47 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:47 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:01:48 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:49 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:50 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:50: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:01:50 INFO: (lock) Lock query queue
+2023-07-18 13:01:51 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:51 INFO: (getSources) Last Source commit: 74ab5dcb-7588-478f-8f53-70bdd927082b
+2023-07-18 13:01:52 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:53 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:53: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:01:53 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:53 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nytimes.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:01:53 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:01:54 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:55 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:01:55 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:01:56 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:57 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:58 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:59 INFO: (getTask) Task for politico_rss
+2023-07-18 13:01:59 INFO: (getTask) Task for deutsche_welle_en_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nytimes.com-rss 
+
+2023-07-18 13:01:59 INFO: (mainExecute)  Sheduled sources:
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nytimes.com-rss
+
+
+2023-07-18 13:02:00 INFO: (getTask) Task for deutsche_welle_en_rss
+2023-07-18 13:02:00 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:00 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:02:00 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:02:00 INFO: (getTask) Task for bertelsmann_stiftung_en_rss
+2023-07-18 13:02:00 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:02:00 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:02:00 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:02:00 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:02:01 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:02 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:02 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:02:03 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:04 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:05 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:05: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:02:05 INFO: (lock) Lock query queue
+2023-07-18 13:02:06 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:06 INFO: (getSources) Last Source commit: 74ab5dcb-7588-478f-8f53-70bdd927082b
+2023-07-18 13:02:07 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:07: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:02:07 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:02:08 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:02:08 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:02:08 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:09 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:10 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:10 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:02:11 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:12 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:13 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:14 INFO: (getTask) Task for politico_rss
+
+--- toStart
+ nbcnews.com-rss 
+
+
+--- toStop
+ nytimes.com-rss 
+
+
+--- toUpdate
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss 
+
+2023-07-18 13:02:14 INFO: (mainExecute) STOP nytimes.com-rss at "* */30 * * * *"
+2023-07-18 13:02:14 INFO: (mainExecute) START nbcnews.com-rss at "0 */10 * * * *"
+2023-07-18 13:02:14 INFO: (mainExecute)  Sheduled sources:
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nbcnews.com-rss
+
+
+2023-07-18 13:02:15 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:15 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:02:15 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:02:16 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:17 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:17 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:02:18 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:19 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:20 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:20: INFO: (mainExecute) Instance 9ea0ae90-d84e-4a3c-be57-783d714cb4bb version 1.0.1 
+2023-07-18 13:02:20 INFO: (lock) Lock query queue
+2023-07-18 13:02:20 INFO: (getTask) Task for foxnews.com-rss
+2023-07-18 13:02:20 INFO: (getTask) Task for keeptalkinggreece_rss
+2023-07-18 13:02:21 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:21 INFO: (getSources) Last Source commit: 74ab5dcb-7588-478f-8f53-70bdd927082b
+2023-07-18 13:02:22 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:22: INFO: (mb.getSources) Fetch:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+
+2023-07-18 13:02:22 INFO: (getSources) Ready sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:02:23 INFO: (getSources) Valid sources:
+ unian.ua-rss
+nbcnews.com-rss
+foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss 
+
+2023-07-18 13:02:23 INFO: (getSources) Invalid sources:
+  
+
+2023-07-18 13:02:23 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:24 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:25 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:25 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:02:26 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:27 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:28 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:29 INFO: (getTask) Task for politico_rss
+
+--- toStart
+  
+
+
+--- toStop
+  
+
+
+--- toUpdate
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nbcnews.com-rss 
+
+2023-07-18 13:02:29 INFO: (mainExecute) RESTART nbcnews.com-rss at "0 */10 * * * *"
+2023-07-18 13:02:29 INFO: (mainExecute)  Sheduled sources:
+ foxnews.com-rss
+edition.cnn.com-rss
+cbsnews.com-rss
+bloomberg_rss
+politico_rss
+the_hill_rss
+the_guardian_rss
+reuters_rss
+sky_news_rss
+chatham_house_ац_rss
+rusi_ац_rss
+the_independent_rss
+deutsche_welle_en_rss
+deutsche_welle_ua_rss
+frankfurter_allgemeine_zeitung_rss
+bild_rss
+bertelsmann_stiftung_en_rss
+stern_rss
+le_monde_en_rss
+le_parisien_rss
+intelligenceonline_rss
+repubblica_rss
+israelhayom_rss
+thelocal_rss
+helsinkitimes_rss
+delfi_lv_rss
+delfi_ru_rss
+keeptalkinggreece_rss
+газетаuz_ru_rss
+unian.ua-rss
+nbcnews.com-rss
+
+
+2023-07-18 13:02:30 INFO: (getTask) Task for politico_rss
+----------------------- mainExecute -----------------------------
+2023-07-18 13:02:30 > WARNING: (mainExecute) Ignore sync by lock
+-------------------------------------------------------------------
+2023-07-18 13:02:30 INFO: (getTask) Task for bloomberg_rss
+2023-07-18 13:02:30 INFO: (getTask) Task for sky_news_rss
+2023-07-18 13:02:30 INFO: (getTask) Task for the_independent_rss
+2023-07-18 13:02:31 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:32 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:32 INFO: (unlock) Unlock query queue
+------------------------------------------------------------------
+
+2023-07-18 13:02:33 INFO: (getTask) Task for politico_rss
+2023-07-18 13:02:34 INFO: (getTask) Task for politico_rss

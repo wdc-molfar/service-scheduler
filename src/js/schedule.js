@@ -10,7 +10,7 @@ let scheduleId = require("uuid").v4()
 let bridge
 let options
 let mainTask
-let commit
+// let commit
 let publisher
 
 
@@ -37,7 +37,7 @@ const unlock = () => {
 const getSources = async bridge => {
 	try {
 	
-		commit = await bridge.getHeadCommit()
+		let commit = await bridge.getHeadCommit()
 		if(!commit) {
 			console.log(`${date()} WARNING: (getSources) Last commit not exists`)
 			return
@@ -203,8 +203,13 @@ module.exports = {
 
 	stop: async () => {
 
+
+		let commit = await bridge.getHeadCommit()
+		
 		cronSources.forEach( s => {
 			
+
+
 			s.schedule.process = {
 				type: "warning",
 				message: `Stop by termination of the shedule instance ${scheduleId} at ${moment(date()).format("YY-MM-DD HH:mm:ss")}`	
