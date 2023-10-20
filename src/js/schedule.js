@@ -93,6 +93,12 @@ const getTask = source => async () => {
 			}
 		}
 
+
+		console.log("--------------------------------------------------------")
+		console.log(JSON.stringify(message, null, " "))
+		console.log("--------------------------------------------------------")
+
+
 		publisher.send(message)
 		console.log(`${date()} INFO: (getTask) Task for ${source.info.name}`)
 	} catch (e){
